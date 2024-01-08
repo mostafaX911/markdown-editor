@@ -5,15 +5,17 @@
       class="code"
       :style="{ color: actualSkin.color }"
     ></textarea>
-    <div class="result" :inner-html.prop="compiledOutpot"></div>
+    <div class="result" :inner-html.prop="$md.render(code)"></div>
   </div>
 </template>
 <script>
-// import VueDown from 'vue-down'
-import markdownit from 'markdown-it'
+// import $md from 'markdown-it'
+// import markdownit from 'markdown-it'
+// import markdownitSub from 'markdown-it-sub'
 
 export default {
   name: 'MarkdownEditor',
+
   data() {
     return {
       appTitle: 'VueDown Editor',
@@ -30,9 +32,9 @@ export default {
     }
   },
   computed: {
-    compiledOutpot() {
-      return markdownit().render(this.code)
-    },
+    // compiledOutpot() {
+    //   return $md.render(this.code)
+    // },
   },
   methods: {},
 }

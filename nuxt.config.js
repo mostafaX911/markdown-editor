@@ -39,6 +39,19 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/markdownit',
   ],
+  markdownit: {
+    preset: 'default',
+    linkify: true,
+    breaks: true,
+    runtime: true,
+    use: [
+      'markdown-it-div',
+      'markdown-it-attrs',
+      'markdown-it-sub',
+      'markdown-it-sup',
+      'markdown-it-video',
+    ],
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
