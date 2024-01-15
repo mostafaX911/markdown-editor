@@ -1,9 +1,9 @@
-import colors from 'vuetify/es5/util/colors'
-
 export default {
+  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+  ssr: false,
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - markdown-editor',
     title: 'markdown-editor',
     meta: [
       { charset: 'utf-8' },
@@ -15,7 +15,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['~/assets/_variables.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -27,17 +27,31 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/markdownit',
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: 'AIzaSyB63xQ5vDXQyrjwO2oxvhr0iqK9kGp0aYM',
+          authDomain: 'md-editor-x.firebaseapp.com',
+          projectId: 'md-editor-x',
+          storageBucket: 'md-editor-x.appspot.com',
+          messagingSenderId: '284378257366',
+          appId: '1:284378257366:web:f92f50528a8f7e327fb677',
+        },
+        services: {
+          auth: true,
+          firestore: true,
+        },
+      },
+    ],
   ],
   markdownit: {
     preset: 'default',
@@ -50,38 +64,14 @@ export default {
       'markdown-it-sub',
       'markdown-it-sup',
       'markdown-it-video',
+      'markdown-it-footnote',
     ],
-  },
-
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
       lang: 'en',
-    },
-  },
-
-  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
-  vuetify: {
-    customVariables: ['~/assets/variables.scss'],
-    theme: {
-      dark: false,
-      themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3,
-        },
-      },
     },
   },
 

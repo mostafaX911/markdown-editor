@@ -1,17 +1,15 @@
 <template>
-  <header>
-    <button @click="addimage">Image</button>
-    <button>Video</button>
-    <button>Description</button>
-    <button>Quote</button>
-    <button>Footnote</button>
-    <button>Link</button>
-    <button>Button</button>
-    <button>File</button>
-    <button>2 Columns</button>
-    <button>Table</button>
-    <button>Table row</button>
-  </header>
+  <v-app-bar dense class="d-flex" elevation="0">
+    <v-btn text @click="markdownH1">H1</v-btn>
+    <v-btn text @click="markdownH2">H2</v-btn>
+    <v-btn text @click="markdownH3">H3</v-btn>
+    <v-btn text @click="markdownImage">Image</v-btn>
+    <v-btn text @click="markdownVideo">Video</v-btn>
+    <v-btn text @click="markdownFootnote">Footnote</v-btn>
+    <v-btn text @click="markdownLink">Link</v-btn>
+    <v-btn text @click="markdownTable">Table</v-btn>
+    <v-btn text @click="markdownTablerow">Table row</v-btn>
+  </v-app-bar>
 </template>
 <script>
 export default {
@@ -22,36 +20,37 @@ export default {
   },
   computed: {},
   methods: {
-    addimage() {
-      this.$emit('addimage')
+    markdownFootnote() {
+      this.$nuxt.$emit('markdownFootnote')
+    },
+    markdownVideo() {
+      this.$nuxt.$emit('markdownVideo')
+    },
+    markdownImage() {
+      this.$nuxt.$emit('markdownImage')
+    },
+    markdownLink() {
+      this.$nuxt.$emit('markdownLink')
+    },
+    markdownTable() {
+      this.$nuxt.$emit('markdownTable')
+    },
+    markdownTablerow() {
+      this.$nuxt.$emit('markdownTablerow')
+    },
+    markdown2cols() {
+      this.$nuxt.$emit('markdown2cols')
+    },
+    markdownH1() {
+      this.$nuxt.$emit('markdownH1')
+    },
+    markdownH2() {
+      this.$nuxt.$emit('markdownH2')
+    },
+    markdownH3() {
+      this.$nuxt.$emit('markdownH3')
     },
   },
 }
 </script>
-<style lang="scss">
-header {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-
-  height: $foot-height;
-  line-height: $foot-height;
-  text-align: center;
-  font-size: 0.75em;
-  color: rgba($black, 0.8);
-  background: $light-gray;
-  border-radius: 5px 5px 0 0;
-  .buttons {
-    position: absolute;
-    top: 6px;
-    left: 22px;
-    width: 8px;
-    height: 8px;
-    background: $orange;
-    border-radius: 50%;
-    box-shadow: -12px 0 0 $red, 12px 0 0 $green;
-  }
-}
-</style>
+<style lang="scss"></style>
